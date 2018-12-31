@@ -1,0 +1,48 @@
+<div class="container col-md-7">
+    <form [formGroup]="accountFormGroup" class="bgcol shadow-lg animated fadeInDown">
+        <div class="form-group">
+            <div class="col-12" style="text-align:center">
+                <h1>&nbsp;&nbsp;<a>Form Account</a></h1>
+                <hr>
+            </div>
+        </div>
+        <div class="container">
+            <div class="form">
+                <div class="col-12">
+                    <label>Open Date</label>
+                    <input type="date" class="form-control" formControlName="openDate">
+                </div>
+                <div class="col-12">
+                    <label>Balance</label>
+                    <input type="number" class="form-control" formControlName="balance">
+                </div>
+                <div *ngIf="showCustNum" class="col-12">
+                    <label>Customer Name</label>
+                    <app-combo-customer (customer)="setSelectedCustomer($event)" [selectedCustomer]="customer.customernumber"></app-combo-customer>
+                    <!-- <select formControlName="custnumbid" class="form-control">
+                <option value="" selected disabled>Choose your option</option>
+                <option *ngFor="let cust of ListCustomer" [ngValue]="cust.customernumber">{{cust.firstname}}
+                    {{cust.lastname}}</option>
+            </select> -->
+                </div>
+                <div class="row">
+                    <div>
+                        &nbsp;
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12" style="text-align:center">
+                        <button class="btn success" type="button" (click)="savesweet()" [disabled]="!accountFormGroup.valid">Add</button>
+                        <button class="btn success" type="button" (click)="updatesweet()" [disabled]="!accountFormGroup.valid">Submit</button>
+                        <button class="btn warning" type="button" (click)="cancelChanges()">Cancel</button>
+                    </div>
+                </div>
+                <div class="row">
+                    <div>
+                        &nbsp;
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

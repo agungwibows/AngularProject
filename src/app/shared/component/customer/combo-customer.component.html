@@ -1,0 +1,6 @@
+<select (change)="onChange($event.target.value)" class="form-control">
+  <option value="" disabled selected>Choose your option</option>
+  <option *ngFor="let cust of ListCustomer; let i = index" [value]="1">
+    {{cust.firstname + " " + cust.lastname}}
+  </option>
+</select>

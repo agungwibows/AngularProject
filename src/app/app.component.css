@@ -1,0 +1,143 @@
+#myInput {
+  background-image: url('../app/shared/angular-logo.png');
+  background-position: 1px ;
+  background-repeat: no-repeat;
+  width: 100%;
+  font-size: 18px;
+  padding: 12px 20px 12px 40px;
+  /* border: 1px solid #ddd; */
+  margin-bottom: 12px;
+}
+
+.tablecustomer{
+    text-align: center;
+    font-size: 12px;
+
+}
+
+* {box-sizing: border-box;}
+
+body { 
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+#navbar {
+  overflow: hidden;
+  background-color: #f1f1f1;
+  padding: 90px 10px;
+  transition: 0.4s;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 99;
+}
+.navbar-custom {
+  color: #FFFFFF;
+  background-color: #A3A8B7;
+}
+
+#navbar a {
+  float: left;
+  color: black;
+  text-align: center;
+  padding: 12px;
+  text-decoration: none;
+  font-size: 18px; 
+  line-height: 25px;
+  border-radius: 4px;
+}
+
+#navbar #logo {
+  font-size: 35px;
+  font-weight: bold;
+  transition: 0.4s;
+}
+
+#navbar a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+#navbar a.active {
+  background-color: dodgerblue;
+  color: white;
+}
+
+#navbar-right {
+  float: right;
+}
+
+@media screen and (max-width: 580px) {
+  #navbar {
+    padding: 20px 10px !important;
+  }
+  #navbar a {
+    float: none;
+    display: block;
+    text-align: left;
+  }
+  #navbar-right {
+    float: none;
+  }
+}
+footer {
+    background-color: #777;
+    padding: 7px;
+    text-align: center;
+    color: white;
+  }
+  body {
+    background-color: green;
+  }
+  
+ a:link {
+  color: green;
+}
+
+/* visited link */
+a:visited {
+  color: green;
+}
+
+/* mouse over link */
+a:hover {
+  color: red;
+}
+
+/* selected link */
+a:active {
+  color: yellow;
+} 
+a.ex1:hover, a.ex1:active {color: yellow;}
+
+a {
+  font-family: "Times New Roman", Times, serif;
+}
+
+.navbar-custom {
+  /* color: #FFFFFF;
+  background-color: #CC3333; */
+  /* background: linear-gradient(to left, #0066cc 0%, #0099ff 100%); */
+  /* background: linear-gradient(to bottom right, #99ff66 0%, #00ff99 100%); */
+  /* background: linear-gradient(to bottom right, #ffff00 0%, #00ff99 100%); */
+  background: linear-gradient(to bottom right, #ffffff 0%, #999966 100%);
+}
+
+.b {
+  background: linear-gradient(to right, #ff6666 0%, #ff0000 100%);
+}
+
+
+.navbar a {
+  float: left;
+  display: block;
+  color: #242424;
+  text-align: center;   
+  text-decoration: none;
+}
+
+.navbar a:hover {
+  background: rgb(210, 211, 209);
+  color: black;
+}

@@ -1,0 +1,67 @@
+<div class="container">
+  <div class="row">
+      <div class="col-sm">
+          <form class="nav navbar-nav navbar-left animated rollIn delay-0.7s">
+          <h3 ><i class="fa fa-fw fa-user " style="color:rgb(255, 182, 98)"></i><a>&nbsp;Customer List</a></h3>
+          </form>
+      </div>
+      <div class="col-3">
+              <form class="nav navbar-nav navbar-right form-inline animated flipInX delay-1s">
+          <input class="form-control mr-sm-2 col-12" type="text" id="myInput" (keyup)="myFunction()" placeholder="Search for id or names.."
+              title="Type in a name">
+              </form>
+      </div>
+  </div>
+</div>
+
+<table id="myTable" class="table table-striped table-bordered table-sm animated fadeInUp delay-1.2s shadow-lg" cellspacing="0" width="100%" style="text-align:center">
+  <thead class="gradient">
+      <!-- <tr onclick="row"> -->
+      <th style="text-align: center"><i class="fas fa-leaf" style="color:rgb(115, 156, 196)"></i>Customer
+          Number</th>
+      <th style="text-align: center"><i class="fas fa-leaf" style="color:rgb(116, 209, 163)"></i>First
+          Name</th>
+      <th style="text-align: center"><i class="fas fa-leaf" style="color:rgb(226, 240, 107)"></i>Last
+          Name</th>
+      <th style="text-align: center"><i class="fas fa-leaf" style="color:rgb(236, 133, 240)"></i>Birth
+          Date</th>
+      <th style="text-align: center"><i class="fas fa-leaf" style="color:rgb(236, 123, 108)"></i>Phone
+          Number</th>
+      <th style="text-align: center"><i class="fas fa-leaf" style="color:rgb(210, 134, 230)"></i>Phone
+          Type</th>
+      <th style="text-align: center"><i class="fas fa-leaf" style="color:rgb(117, 222, 230)"></i>Username</th>
+      <th colspan="2" style="text-align: center"><i class="fas fa-leaf" style="color:rgb(124, 74, 74)"></i>Action</th>
+      <!-- </tr> -->
+  </thead>
+  <tbody>
+      <tr *ngFor="let cust of ListCustomer | paginate: { itemsPerPage: 10, currentPage: p }">
+          <td>{{cust.customernumber}}</td>
+          <td>{{cust.firstname}} </td>
+          <td>{{cust.lastname}}</td>
+          <td>{{cust.birthdate}}</td>
+          <td>{{cust.phonenumber | enigma}}</td>
+          <td>{{cust.phonetype}}</td>
+          <td>{{cust.username}}</td>
+          <td>
+              <button title="View Account" class="btn info btn-sm " (click)="viewAccount(cust);"><i class="far fa-eye"
+                      style="font-size:12px"></i></button>
+              <button title="Edit" class="btn btn-sm warning" (click)="selectCustomer(cust);"><i class="fas fa-user-edit"
+                      style="font-size:12px"></i></button>
+              <button title="Delete" class="btn btn-sm danger" (click)="deleteRow(cust);"><i class="fas fa-trash-alt"
+                      style="font-size:12px"></i></button>
+          </td>
+      </tr>
+  </tbody>
+  <tfoot>
+      <tr>
+          <td colspan="8">
+              <button class="button btn-xs btn-success" type="button" (click)="addCustomer();"><i class="fa fa-user-plus"
+                      style="font-size:15px;color:white"></i><a>&nbsp;Add</a></button>
+          </td>
+      </tr>
+  </tfoot>
+</table>
+<pagination-controls (pageChange)="p = $event"></pagination-controls>
+<div>
+  <app-customer-form #formCustomer *ngIf="showDetail" [customer]="selectedCustomer" (result)=prosesResult($event)></app-customer-form>
+</div>

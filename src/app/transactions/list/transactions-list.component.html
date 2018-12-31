@@ -1,0 +1,60 @@
+<div class="container">
+  <div class="row">
+      <div class="col-sm">
+          <form class="nav navbar-nav navbar-left animated rollIn delay-0.7s">
+
+              <h3><i style="font-size:18px" class="fab fa-amazon-pay" style="color:rgb(53, 145, 238)"></i><a>&nbsp;Trasanctions
+                      List</a></h3>
+          </form>
+      </div>
+      <div class="col-3">
+          <form class="nav navbar-nav navbar-right form-inline animated flipInX delay-1s">
+              <input class="form-control mr-sm-2 col-12" type="text" id="myInput" (keyup)="myFunction()" placeholder="Search for id or names.."
+                  title="Type in a name">
+          </form>
+      </div>
+  </div>
+</div>
+
+<table id="myTable" class="table table-striped table-bordered table-sm animated fadeInUp delay-1.2s shadow-lg" cellspacing="0"
+  width="100%" style="text-align:center">
+  <thead class="gradient">
+      <!-- <tr onclick="row"> -->
+      <th style="text-align:center"><i class="fas fa-leaf" style="color:rgb(115, 156, 196)"></i>Id</th>
+      <th style="text-align:center"><i class="fas fa-leaf" style="color:rgb(116, 209, 163)"></i>Type</th>
+      <th style="text-align:center"><i class="fas fa-leaf" style="color:rgb(226, 240, 107)"></i>Amount</th>
+      <th style="text-align:center"><i class="fas fa-leaf" style="color:rgb(236, 133, 240)"></i>Amount Sign</th>
+      <th style="text-align:center"><i class="fas fa-leaf" style="color:rgb(236, 123, 108)"></i>Account Number</th>
+      <th style="text-align:center"><i class="fas fa-leaf" style="color:rgb(210, 134, 230)"></i>Name</th>
+      <th style="text-align:center"><i class="fas fa-leaf" style="color:rgb(117, 222, 230)"></i>Actions</th>
+      <!-- </tr> -->
+  </thead>
+  <tbody>
+      <tr *ngFor="let trans of ListTransactions | paginate: { itemsPerPage: 10, currentPage: p };">
+          <td>{{trans.id}}</td>
+          <td>{{trans.type}}</td>
+          <td>{{trans.amount | currency: "Rp. "}}</td>
+          <td>{{trans.amountsign}}</td>
+          <td>{{trans.account.accountNumber}}</td>
+          <td>{{trans.account.customer.firstname}} {{trans.account.customer.lastname}}</td>
+          <td>
+              <button title="Edit" class="btn btn-sm warning" (click)="selectTransactions(trans);"><i class="fas fa-user-edit"
+                      style="font-size:12px"></i></button>
+              <button title="Delete" class="btn btn-sm danger" (click)="deleteRow(trans);"><i class="fas fa-trash-alt"
+                      style="font-size:12px"></i></button>
+          </td>
+      </tr>
+  </tbody>
+  <tfoot>
+      <tr>
+          <td colspan="7">
+              <button class="button btn-xs btn-success" type="button" (click)="addTransactions();"><i class="fa fa-user-plus"
+                      style="font-size:15px;color:white"></i><a>&nbsp;Add</a></button>
+          </td>
+      </tr>
+  </tfoot>
+</table>
+<pagination-controls (pageChange)="p = $event"></pagination-controls>
+<div>
+  <app-transactions-form *ngIf="showDetail" [transactions]="selectedTransactions" (result)=prosesResult($event)></app-transactions-form>
+</div>
